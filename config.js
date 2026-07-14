@@ -10,14 +10,14 @@ window.HUGO_CONFIG = {
   discordOAuthURL: "https://discord.com/oauth2/authorize?client_id=1526452104057589761&response_type=token&redirect_uri=https%3A%2F%2Fhugomacro.js.org%2F&scope=identify",
 
   // URL deines Lizenz-Servers (server.py). Ersetze mit deiner Domain.
-  licenseServer: "http://154.43.52.66:8787",  // <-- hier deine Server-URL eintragen
+  licenseServer: "http://154.43.52.66:25678",  // <-- hier deine Server-URL eintragen
 
   // Endpoint des Bots, der nach Key-Aktivierung die HugoMacro+ Rolle vergibt.
   // Bot laeuft lokal -> ueber Cloudflare-Tunnel/ngrok erreichbar machen.
-  grantRole: "http://127.0.0.1:8788",  // <-- Bot Grant-Endpoint (tunneln!)
+  grantRole: "154.43.52.66:25678",  // <-- Bot Grant-Endpoint (tunneln!)
 
   // Download-Link zur .jar (z.B. GitHub Release)
-  downloadURL: "https://cdn.discordapp.com/attachments/1440429787603800247/1526721977623253123/HugoMacro.jar?ex=6a580e24&is=6a56bca4&hm=35757a1bbb26049f5d9b1f3f7e834c7533514bb385ff5476295b1dec3d900c2c&",
+  downloadURL: "https://cdn.discordapp.com/attachments/1440429787603800247/1526735583878189126/HugoMacro.jar?ex=6a581ad0&is=6a56c950&hm=afc6a23beeb867837ffee31470292b911c878dffbb5472d2e604108955c82497&",
 
   // Letzte Version / Datum (Anzeige)
   version: "v1.7.0",

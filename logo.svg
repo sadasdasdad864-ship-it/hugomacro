@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="redFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff3b3b"/>
+      <stop offset="1" stop-color="#c1121f"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff2e9a"/>
+      <stop offset="0.5" stop-color="#b026ff"/>
+      <stop offset="1" stop-color="#6a00ff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#b026ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#b026ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- ambient glow -->
+  <circle cx="256" cy="256" r="220" fill="url(#glow)"/>
+
+  <!-- crystal shard behind -->
+  <polygon points="300,70 380,210 340,360 250,300 270,150"
+           fill="#3a0d5c" opacity="0.9"/>
+  <polygon points="300,70 380,210 320,230 285,150"
+           fill="#521a7a" opacity="0.9"/>
+
+  <!-- energy rings -->
+  <g fill="none" stroke="url(#ring)" stroke-linecap="round" filter="url(#soft)">
+    <path d="M110,360 A170,170 0 0 1 400,150" stroke-width="16" opacity="0.9"/>
+    <path d="M150,410 A210,210 0 0 0 430,250" stroke-width="12" opacity="0.7"/>
+    <path d="M400,360 A150,150 0 0 1 250,430" stroke-width="10" opacity="0.6"/>
+  </g>
+
+  <!-- 3D extrude (black depth) -->
+  <g transform="translate(14,16)">
+    <path d="M150,140 h56 v58 h100 v-58 h56 v232 h-56 v-58 h-100 v58 h-56 z" fill="#0a0a0a"/>
+  </g>
+
+  <!-- red front face of H -->
+  <path d="M150,140 h56 v58 h100 v-58 h56 v232 h-56 v-58 h-100 v58 h-56 z" fill="url(#redFace)"/>
+
+  <!-- tech panel details -->
+  <g fill="#8f0d16" opacity="0.85">
+    <rect x="160" y="152" width="34" height="14" rx="2"/>
+    <rect x="160" y="242" width="26" height="12" rx="2"/>
+    <rect x="160" y="330" width="30" height="14" rx="2"/>
+  </g>
+  <!-- top highlight -->
+  <path d="M150,140 h56 v10 h-56 z M306,140 h56 v10 h-56 z" fill="#ff6a6a" opacity="0.8"/>
+</svg>

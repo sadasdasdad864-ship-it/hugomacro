@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HugoMacro – Dashboard</title>
+<title>HugoMacro – Macros für HugoSmp</title>
+<meta name="description" content="HugoMacro – der Fabric Macro-Client für HugoSmp. AH, Sell, Shop, RTP, Ancient Miner & mehr.">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,323 +17,122 @@
   <div class="wrap nav">
     <a class="brand" href="index.html"><img src="logo.png" alt="HugoMacro"> Hugo<span>Macro</span></a>
     <nav class="navlinks">
-      <a href="index.html#features">Home</a>
-      <a href="index.html#features">Modules</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="index.html#faq">FAQ</a>
+      <a href="#features">Home</a>
+      <a href="#features">Modules</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <div class="navright">
-      <span class="lang"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg> DE</span>
+      <span class="lang">🌐 DE ▾</span>
       <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
     </div>
   </div>
 </header>
 
-<!-- ============ VERIFY GATE ============ -->
-<div id="gate" class="gate">
-  <div class="box">
-    <img src="logo.png" alt="HugoMacro">
-    <h1>Dashboard-Zugang</h1>
-    <p>Verifiziere dich mit Discord, um auf dein Dashboard, deine Downloads und deinen Key zuzugreifen.</p>
-    <button id="loginBtn" class="btn btn-dc btn-block">
-      <svg width="20" height="15" viewBox="0 0 24 18" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4 0l-.3.5c2.2.6 3.2 1.4 4.3 2.4A18.7 18.7 0 0 0 12 1.9a18.7 18.7 0 0 0-7.4 1c1.1-1 2.1-1.8 4.3-2.4L8.6 0A19.8 19.8 0 0 0 3.7 1.6C.6 6.2-.2 10.7.2 15.1a20 20 0 0 0 6 3l.8-1.1c-.7-.3-1.4-.6-2-1l.5-.4a14.3 14.3 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l.8 1.1a20 20 0 0 0 6-3c.4-5.2-.8-9.6-3.9-13.5ZM8 12.4c-1.2 0-2.1-1.1-2.1-2.4 0-1.3.9-2.4 2.1-2.4s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4 0-1.3.9-2.4 2.1-2.4s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"/></svg>
-      Mit Discord verifizieren
-    </button>
-    <p style="margin-top:18px;font-size:.82rem">Noch keinen Key? <a href="index.html#pricing" style="color:var(--accent)">Plan wählen</a></p>
-  </div>
-</div>
+<div class="wrap">
 
-<!-- ============ LICENSE GATE ============ -->
-<div id="lic" class="gate hidden">
-  <div class="box">
-    <img src="logo.png" alt="HugoMacro">
-    <h1>Lizenz aktivieren</h1>
-    <p>Gib deinen Lizenz-Key ein, um den Download und das Dashboard freizuschalten.</p>
-    <input id="licInput" class="input" style="margin-bottom:14px" placeholder="XXXX-XXXX-XXXX-XXXX">
-    <button id="licBtn" class="btn btn-primary btn-block">Key aktivieren</button>
-    <p id="licMsg" style="margin-top:14px;font-size:.85rem;min-height:1.2em"></p>
-    <p style="margin-top:10px;font-size:.82rem">Noch keinen Key? <a href="index.html#pricing" style="color:var(--accent)">Plan wählen</a></p>
-  </div>
-</div>
-
-<!-- ============ DASHBOARD ============ -->
-<div id="dash" class="dash-wrap hidden">
-  <!-- sidebar -->
-  <aside class="sidebar">
-    <div class="profile">
-      <div class="av"><img id="avatar" src="logo.png" alt=""></div>
-      <div class="name" id="username">! Apotheker</div>
-      <div class="tier">HugoMacro+</div>
-      <div class="life" id="tier">Lifetime</div>
-      <div class="dev"><span style="display:inline-flex;vertical-align:middle"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></span> Geräte <span id="devices">1/2</span></div>
+  <section class="hero">
+    <img src="logo.png" class="logo" alt="HugoMacro Logo">
+    <span class="badge">⚡ Fabric 1.21.11 · <b class="grad">&nbsp;v1.7.0</b></span>
+    <h1>Der <span class="grad">HugoMacro</span> Client<br>für HugoSmp.</h1>
+    <p>Alle Macros, die du auf HugoSmp brauchst – Auktionshaus, Verkauf, Shop, RTP,
+       Ancient Miner und mehr. Ein Tastendruck, alles läuft.</p>
+    <div class="btns">
+      <a href="dashboard.html" class="btn btn-primary">🎛️ Zum Dashboard</a>
+      <a href="#pricing" class="btn btn-ghost">Preise ansehen</a>
     </div>
-    <nav class="menu">
-      <a class="active" data-tab="downloads"><span class="ic"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></span> Downloads</a>
-      <a data-tab="utilities"><span class="ic"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg></span> Utilities</a>
-      <a data-tab="faq"><span class="ic"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span> FAQ</a>
-      <a data-tab="updates"><span class="ic"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span> Updates</a>
-      <a data-tab="redeem"><span class="ic"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></svg></span> Redeem Key</a>
-      <div class="divider"></div>
-      <a id="logout"><span class="ic"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></span> Log out</a>
-    </nav>
-  </aside>
+    <div class="stats">
+      <div><b>11+</b> Macros</div>
+      <div><b>1.21.11</b> Minecraft</div>
+      <div><b>Fabric</b> Loader</div>
+      <div><b>Java 21</b></div>
+    </div>
+  </section>
 
-  <!-- content -->
-  <main class="content">
-    <!-- DOWNLOADS -->
-    <section data-panel="downloads">
-      <div class="panel">
-        <div class="row" style="margin-bottom:0">
-          <div class="left">
-            <div class="rico"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></div>
-            <div>
-              <div class="rt">HugoMacro+ – Latest</div>
-              <div class="rs">Aktuelle Version · <span class="pill" style="padding:2px 8px">jar</span> · Stand <span id="upd">14. Juli 2026</span></div>
-            </div>
-          </div>
-          <a id="dlBtn" class="btn btn-primary"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Download</a>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Quick Start</h2>
-        <div class="desc">In 3 Schritten startklar.</div>
-        <div class="qs">
-          <div class="lc"><div class="li"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></div><div class="ln">Download</div><div class="lst">Neueste .jar oben laden.</div></div>
-          <div class="lc"><div class="li"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="m15 13-3 3-3-3"/></svg></div><div class="ln">Install</div><div class="lst">In deinen 1.21.11 mods-Ordner.</div></div>
-          <div class="lc"><div class="li"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></div><div class="ln">Play</div><div class="lst">Starten & Taste P drücken.</div></div>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Kompatible Launcher</h2>
-        <div class="desc">Läuft auf allen Fabric-Launchern.</div>
-        <div class="launchers">
-          <div class="lc"><img class="launcher-logo" src="assets/minecraft.svg" alt="Minecraft"><div class="ln">Minecraft Launcher</div><div class="lst">Official</div></div>
-          <div class="lc"><img class="launcher-logo" src="assets/modrinth.svg" alt="Modrinth"><div class="ln">Modrinth App</div><div class="lst">Compatible</div></div>
-          <div class="lc"><img class="launcher-logo" src="assets/feather.png" alt="Feather"><div class="ln">Feather Client</div><div class="lst">Compatible</div></div>
-          <div class="lc"><img class="launcher-logo" src="assets/prism.svg" alt="Prism"><div class="ln">Prism Launcher</div><div class="lst">Compatible</div></div>
-        </div>
-        <p class="lst" style="margin-top:14px;font-style:italic">Andere Fabric-Launcher funktionieren evtl. auch – der Rest liegt bei dir.</p>
-      </div>
-      <div class="panel">
-        <h2>System Requirements</h2>
-        <div class="sysreq" style="margin-top:14px">
-          <div><div class="lbl">Version</div><div class="val">1.21.11</div></div>
-          <div><div class="lbl">Mod Loader</div><div class="val">Fabric</div></div>
-          <div><div class="lbl">Required</div><div class="val">Fabric API</div></div>
-          <div><div class="lbl">Java</div><div class="val">21+</div></div>
-        </div>
-      </div>
-    </section>
+  <section class="blk" id="features">
+    <div class="h2">Alle Module</div>
+    <p class="sub">Jedes Macro ist auf HugoSmp abgestimmt und per Taste oder Dashboard steuerbar.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🏷️</div><h3>AH-Macro</h3><p>Auktionshaus automatisch – kaufen und listen ohne Klicken.</p></div>
+      <div class="card"><div class="ico">📦</div><h3>Order-Macro</h3><p>Bestellungen automatisch abarbeiten.</p></div>
+      <div class="card"><div class="ico">💰</div><h3>Sell-Macro</h3><p>Inventar blitzschnell automatisch verkaufen.</p></div>
+      <div class="card"><div class="ico">🛒</div><h3>Shop-Buyer</h3><p>Items im Shop in Massen einkaufen.</p></div>
+      <div class="card"><div class="ico">📮</div><h3>Abhol-Macro</h3><p>Verkäufe & Lieferungen automatisch abholen.</p></div>
+      <div class="card"><div class="ico">⛏️</div><h3>Ancient Miner</h3><p>Highlight & Auto-Mining mit Render-Overlay.</p></div>
+      <div class="card"><div class="ico">🌍</div><h3>RTP-Controller</h3><p>Random-Teleport mit Biome-Auswahl.</p></div>
+      <div class="card"><div class="ico">😴</div><h3>Auto-AFK</h3><p>Bleib aktiv – kein Kick mehr.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h3>Spawner-Protect</h3><p>Erkennt Bedrohungen an Spawnern.</p></div>
+      <div class="card"><div class="ico">📥</div><h3>Spawner-Dropper</h3><p>Spawner automatisch einsammeln.</p></div>
+      <div class="card"><div class="ico">🎛️</div><h3>Dashboard-GUI</h3><p>Alle Macros zentral steuern.</p></div>
+      <div class="card"><div class="ico">⌨️</div><h3>Keybinds</h3><p>Frei belegbare Tasten pro Feature.</p></div>
+    </div>
+  </section>
 
-    <!-- UTILITIES -->
-    <section data-panel="utilities" class="hidden">
-      <div class="panel">
-        <h2>🖥️ Device Slots</h2>
-        <div class="desc">Maximal 2 Geräte pro Account. Slots sind nur für deinen eigenen Gebrauch – bei Missbrauch wird die Lizenz widerrufen.</div>
-        <div class="row" style="margin-bottom:0">
-          <div class="left"><div class="rico"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div><div><div class="rt">Device Slots</div><div class="rs">1/2 in use</div></div></div>
-          <span class="pill">At max</span>
-        </div>
+  <section class="blk" id="pricing">
+    <div class="h2">Choose your plan</div>
+    <p class="sub">Wähle deinen Plan – die Freischaltung läuft über ein Discord-Ticket.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>HugoMacro <span class="grad">30 Tage</span></h3>
+        <div class="price">Ticket <small>/ im Discord</small></div>
+        <ul>
+          <li>Alle Module freigeschaltet</li>
+          <li>30 Tage Laufzeit</li>
+          <li>1 Gerät (HWID-gebunden)</li>
+          <li>Updates inklusive</li>
+        </ul>
+        <a href="#ticket" class="btn btn-dc btn-block open-ticket">💬 Im Discord Ticket öffnen</a>
       </div>
-      <div class="panel">
-        <h2>🔄 HWID Reset</h2>
-        <div class="desc">2 Resets pro Monat.</div>
-        <div class="row" style="margin-bottom:0">
-          <div class="left"><div class="rico">🔄</div><div><div class="rt">HWID Reset</div><div class="rs">Setzt die Geräte-Bindung zurück</div></div></div>
-          <button class="btn btn-primary" id="hwidResetBtn">🔄 Reset HWID</button>
-        </div>
+      <div class="plan feat">
+        <div class="tag">BELIEBT</div>
+        <h3>HugoMacro <span class="grad">Lifetime</span></h3>
+        <div class="price">Ticket <small>/ im Discord</small></div>
+        <ul>
+          <li>Alle Module freigeschaltet</li>
+          <li>Lebenslange Laufzeit</li>
+          <li>2 Geräte (HWID-gebunden)</li>
+          <li>Alle zukünftigen Updates</li>
+          <li>Priorisierter Support</li>
+        </ul>
+        <a href="#ticket" class="btn btn-primary btn-block open-ticket">💬 Im Discord Ticket öffnen</a>
       </div>
-      <div class="panel">
-        <h2>🗑️ Config Reset</h2>
-        <div class="desc">Setzt alle Konfigurationen auf Standard zurück.</div>
-        <div class="row" style="margin-bottom:0">
-          <div class="left"><div class="rico red"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg></div><div><div class="rt">Config Reset</div><div class="rs">Zurück auf Werkseinstellung</div></div></div>
-          <button class="btn btn-ghost" id="cfgResetBtn">🗑️ Reset Config</button>
-        </div>
-      </div>
-      <div class="panel">
-        <h2><span style="display:inline-flex;vertical-align:middle;margin-right:8px"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>Crash Log Analyzer</h2>
-        <div class="desc">Füge deinen Crash-Log ein, um häufige Probleme zu erkennen.</div>
-        <textarea class="input" rows="5" placeholder="Füge deine latest.log oder deinen Crash-Report hier ein..."></textarea>
-        <button class="btn btn-primary" style="margin-top:12px" onclick="alert('Analyse gestartet.')">🔍 Analysieren</button>
-      </div>
-    </section>
+    </div>
+    <p class="sub" style="margin-top:30px">
+      So läufts: Ticket öffnen → Plan wählen → nach Freischaltung Key im <a href="dashboard.html" style="color:var(--accent)">Dashboard</a> einlösen.
+    </p>
+  </section>
 
-    <!-- FAQ -->
-    <section data-panel="faq" class="hidden">
-      <div class="panel">
-        <h2>❓ Häufige Fragen</h2>
-        <div class="desc">Alles Wichtige rund um HugoMacro.</div>
-        <details><summary>Wie installiere ich HugoMacro?</summary><p>Fabric Loader 1.21.11 + Fabric API installieren, .jar in den mods-Ordner legen, Spiel starten, Key eingeben.</p></details>
-        <details><summary>Welche Minecraft-Version wird unterstützt?</summary><p>Minecraft 1.21.11 (Fabric), Java 21+.</p></details>
-        <details><summary>Wie öffne ich das Dashboard im Spiel?</summary><p>Mit der Taste P. Anpassbar in den Minecraft-Steuerungen.</p></details>
-        <details><summary>Kann ich auf mehreren Geräten nutzen?</summary><p>Je nach Plan 1–2 Geräte. HWID wird automatisch beim Start gebunden.</p></details>
-        <details><summary>Mein Key funktioniert nicht – was tun?</summary><p>Öffne ein Ticket im Discord, wir helfen dir weiter.</p></details>
-        <details><summary>Bekomme ich Updates?</summary><p>Ja, alle Updates sind je nach Plan inklusive.</p></details>
-      </div>
-    </section>
+  <section class="blk" id="faq">
+    <div class="h2">FAQ</div>
+    <p class="sub">Alles Wichtige rund um Installation und Keys.</p>
+    <div style="max-width:760px;margin:0 auto">
+      <details><summary>Wie installiere ich HugoMacro?</summary><p>Fabric Loader für 1.21.11 + Fabric API installieren, dann die .jar aus dem Dashboard in deinen mods-Ordner legen. Spiel starten und den Key eingeben.</p></details>
+      <details><summary>Welche Minecraft-Version wird unterstützt?</summary><p>Minecraft 1.21.11 mit Fabric Loader und Fabric API. Java 21 oder neuer erforderlich.</p></details>
+      <details><summary>Wie öffne ich das Dashboard im Spiel?</summary><p>Standardmäßig mit der Taste P. Alle Tasten lassen sich in den Minecraft-Steuerungseinstellungen anpassen.</p></details>
+      <details><summary>Wie bekomme ich einen Key?</summary><p>Öffne ein Ticket im Discord und wähle deinen Plan. Nach Freischaltung löst du den Key im Dashboard ein.</p></details>
+      <details><summary>Kann ich auf mehreren Geräten nutzen?</summary><p>Je nach Plan 1–2 Geräte. Die HWID wird automatisch beim ersten Start gebunden. HWID-Reset ist im Dashboard möglich.</p></details>
+      <details><summary>Was passiert wenn mein Key abläuft?</summary><p>Nach Ablauf der Laufzeit wird der Client automatisch gesperrt und die Macros lassen sich nicht mehr starten.</p></details>
+    </div>
+  </section>
 
-    <!-- UPDATES -->
-    <section data-panel="updates" class="hidden">
-      <div class="panel">
-        <h2>🔄 Changelog</h2>
-        <div class="desc">Was ist neu in HugoMacro.</div>
-        <div class="row" style="flex-direction:column;align-items:flex-start">
-          <div style="display:flex;justify-content:space-between;width:100%">
-            <div class="rt">v1.7.0</div><div class="rs">14. Juli 2026</div>
-          </div>
-          <div style="color:var(--accent);font-size:.9rem;margin-top:10px;line-height:1.9">
-            + Neues Dashboard mit Discord-Login<br>
-            + Sicheres Key-System (HWID-gebunden)<br>
-            # Verbesserte Ancient-Miner-Erkennung<br>
-            # Shop-Buyer optimiert<br>
-            # Bugfixes bei Auto-Sell
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- REDEEM -->
-    <section data-panel="redeem" class="hidden">
-      <div class="panel">
-        <svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></svg></span>Redeem a License Key</h2>
-        <div class="desc">Aktiviere einen neuen Key.</div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <input class="input" style="flex:1;min-width:200px" placeholder="XXXX-XXXX-XXXX-XXXX" id="keyInput">
-          <button class="btn btn-primary" onclick="alert('Key wird eingelöst: '+(document.getElementById('keyInput').value||'—'))">Redeem</button>
-        </div>
-      </div>
-    </section>
-  </main>
 </div>
+
+<footer>
+  <div class="wrap">
+    © 2026 HugoMacro · Fabric Client für HugoSmp · <a href="#" class="open-ticket">Discord</a> · <a href="dashboard.html">Dashboard</a>
+    <div class="disc">HugoMacro ist ein privates Projekt und steht in keiner Verbindung zu Mojang oder Microsoft.
+    Nutzung auf eigene Verantwortung und nur im Rahmen der jeweiligen Serverregeln.</div>
+  </div>
+</footer>
 
 <script src="config.js"></script>
 <script>
-// ---- Gate elements ----
-const gate=document.getElementById('gate');
-const licGate=document.getElementById('lic');
-const dash=document.getElementById('dash');
-let pendingUser=null;
-function showLicenseGate(user){ pendingUser=user||null; gate.classList.add('hidden'); licGate.classList.remove('hidden'); }
-function unlockDash(user){
-  licGate.classList.add('hidden'); dash.classList.remove('hidden');
-  if(user && user.name){ document.getElementById('username').textContent = user.name; }
-  if(user && user.avatar){ document.getElementById('avatar').src = user.avatar; }
-  document.getElementById('upd').textContent = window.HUGO_CONFIG.lastUpdated;
-  const dl=document.getElementById('dlBtn'); dl.href=window.HUGO_CONFIG.downloadURL; dl.target="_blank";
-  if(!window.HUGO_CONFIG.downloadURL || window.HUGO_CONFIG.downloadURL==="#"){ dl.textContent="⬇️ Download (Link folgt)"; dl.classList.add("btn-ghost"); dl.removeAttribute("href"); }
-}
-function genHwid(){ let h=""; const c="abcdef0123456789"; for(let i=0;i<32;i++) h+=c[Math.floor(Math.random()*16)]; return h; }
-function verifyKey(key){
-  const url=window.HUGO_CONFIG.licenseServer.replace(/\/$/,"")+"/verify";
-  return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({key:key,hwid:genHwid()})})
-    .then(r=>r.json().catch(()=>({status:"ERROR"}))).then(j=>({status:j.status||"ERROR",raw:j}));
-}
-// Nach Discord-OAuth-Redirect: Access-Token aus URL-Hash auslesen + User holen
-(function(){
-  const hash=window.location.hash;
-  if(hash.includes('access_token=')){
-    const tok=hash.match(/access_token=([^&]+)/)[1];
-    fetch('https://discord.com/api/users/@me',{headers:{Authorization:'Bearer '+tok}})
-      .then(r=>r.json()).then(u=>{
-        const avatar=u.avatar?('https://cdn.discordapp.com/avatars/'+u.id+'/'+u.avatar+'.png'):'logo.png';
-        const user={name:u.username, avatar:avatar, discord_id:String(u.id)};
-        localStorage.setItem('hugo_verified','1');
-        localStorage.setItem('hugo_user',JSON.stringify(user));
-        window.history.replaceState(null,'',window.location.pathname);
-        showLicenseGate(user);
-      }).catch(()=>showLicenseGate(null));
-  }
-})();
-
-// already verified this session?
-if(localStorage.getItem('hugo_verified')==='1'){
-  showLicenseGate(JSON.parse(localStorage.getItem('hugo_user')||'null'));
-}
-document.getElementById('loginBtn').addEventListener('click',()=>{
-  const url=window.HUGO_CONFIG.discordOAuthURL;
-  // Echte OAuth2-URL gesetzt? -> Browser an Discord leiten (token kommt im Redirect zurueck)
-  if(url && url.includes('discord.com/oauth2')){ window.location.href=url; return; }
-  // Demo-Modus: simuliert einen Discord-Login (avatar + name wie im Screenshot)
-  const demoUser={name:'! Apotheker', avatar:'logo.png', discord_id:'123456789'};
-  localStorage.setItem('hugo_verified','1');
-  localStorage.setItem('hugo_user',JSON.stringify(demoUser));
-  showLicenseGate(demoUser);
-});
-document.getElementById('logout')?.addEventListener('click',()=>{
-  localStorage.removeItem('hugo_verified');localStorage.removeItem('hugo_user');
-  location.reload();
-});
-
-// ---- HWID Reset (server) ----
-document.getElementById('hwidResetBtn').addEventListener('click',function(){
-  var key=localStorage.getItem('hugo_key')||'';
-  if(!key){ alert('Kein Key aktiv. Bitte zuerst Key eingeben.'); return; }
-  if(!confirm('HWID wirklich zuruecksetzen? Danach musst du den Key an einem neuen Gerat erneut aktivieren.')) return;
-  fetch(window.HUGO_CONFIG.licenseServer.replace(/\/$/,'')+'/reset-hwid',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:key})})
-    .then(function(r){return r.json();}).then(function(j){
-      if(j.status==='OK'){ alert('HWID zurueckgesetzt. Aktiviere den Key beim naechsten Start erneut.'); }
-      else { alert('Reset fehlgeschlagen: '+(j.detail||j.error||'unbekannt')); }
-    }).catch(function(){ alert('Server nicht erreichbar.'); });
-});
-
-// ---- Config Reset (lokales Flag fuer den Mod) ----
-document.getElementById('cfgResetBtn').addEventListener('click',function(){
-  if(!confirm('Alle HugoMacro-Configs zuruecksetzen? Beim naechsten Spielstart werden Standardwerte geladen.')) return;
-  // Mod (HugoMacro) loescht beim Start alle .ahm.* Configs, wenn die Datei .ahm.reset
-  // im config-Ordner liegt. Anleitung fuer den User:
-  alert('Config-Reset:\n\n1. Schliesse Minecraft.\n2. Lege eine leere Datei namens ".ahm.reset" in deinen .minecraft/config Ordner.\n3. Starte Minecraft neu - HugoMacro loescht alle Configs und laedt Standardwerte.\n\n(Alternativ: im Spiel Dashboard oeffnen und "Config Reset" nutzen, falls verfuegbar.)');
-});
-
-// ---- License key activation ----
-document.getElementById('licBtn').addEventListener('click',function(){
-  var key=document.getElementById('licInput').value.trim();
-  var msg=document.getElementById('licMsg');
-  if(!key){ msg.style.color="var(--muted)"; msg.textContent="Bitte Key eingeben."; return; }
-  msg.style.color="var(--muted)"; msg.textContent="Prüfe Key...";
-  verifyKey(key).then(function(res){
-    if(res.status==="OK"||res.status==="LIFETIME"||res.status==="ACTIVE"){
-      msg.style.color="var(--good)"; msg.textContent="Key gültig! Dashboard wird freigeschaltet...";
-      localStorage.setItem('hugo_key',key);
-      var did=(pendingUser&&pendingUser.discord_id)||'';
-      try{localStorage.setItem('hugo_discord',did);}catch(e){}
-      // Rolle ueber Bot-Endpoint vergeben
-      if(did){
-        fetch(window.HUGO_CONFIG.grantRole.replace(/\/$/,'')+'/grant-role',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:key,discord_id:did})})
-          .then(function(r){return r.json();}).then(function(j){
-            if(j.status==='OK'){ console.log('HugoMacro+ Rolle vergeben'); }
-          }).catch(function(){});
-      }
-      setTimeout(function(){ unlockDash(pendingUser||null); },700);
-    } else if(res.status==="EXPIRED"){ msg.style.color="var(--accent2)"; msg.textContent="Key abgelaufen.";
-    } else if(res.status==="REVOKED"){ msg.style.color="var(--accent2)"; msg.textContent="Key widerrufen.";
-    } else if(res.status==="BAD_FORMAT"){ msg.style.color="var(--accent2)"; msg.textContent="Ungültiges Key-Format.";
-    } else { msg.style.color="var(--accent2)"; msg.textContent="Key ungültig oder Server nicht erreichbar."; }
-  }).catch(function(){ msg.style.color="var(--accent2)"; msg.textContent="Server nicht erreichbar."; });
-});
-if(localStorage.getItem('hugo_key')){ licGate.classList.add('hidden'); }
-
-
-// reveal on scroll (Krypton style)
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// mark panels for fade
-['downloads','utilities','faq','updates','redeem'].forEach(t=>{
-  const p=document.querySelector('[data-panel="'+t+'"]');
-  if(p) p.style.animation='fadeIn .4s ease';
-});
-
-// sidebar tabs
-document.querySelectorAll('.menu a[data-tab]').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.querySelectorAll('.menu a[data-tab]').forEach(x=>x.classList.remove('active'));
-    a.classList.add('active');
-    const tab=a.dataset.tab;
-    document.querySelectorAll('[data-panel]').forEach(p=>{
-      p.classList.toggle('hidden',p.dataset.panel!==tab);
+  document.querySelectorAll('.open-ticket').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      window.open(window.HUGO_CONFIG.discordInvite,'_blank');
     });
   });
-});
 </script>
 </body>
 </html>

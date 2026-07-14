@@ -2,7 +2,7 @@
 // Hier deine echten Links eintragen:
 window.HUGO_CONFIG = {
   // Discord Invite (fuer Tickets / Verify)
-  discordInvite: "https://discord.gg/DEIN-INVITE",
+  discordInvite: "https://discord.gg/m5UtNVuy2N",
 
   // Discord OAuth2 Login-URL (Dashboard-Verify).
   // response_type=token -> Frontend liest Token direkt aus Browser.
@@ -17,7 +17,7 @@ window.HUGO_CONFIG = {
   grantRole: "http://127.0.0.1:8788",  // <-- Bot Grant-Endpoint (tunneln!)
 
   // Download-Link zur .jar (z.B. GitHub Release)
-  downloadURL: "#",
+  downloadURL: "https://cdn.discordapp.com/attachments/1440429787603800247/1526721977623253123/HugoMacro.jar?ex=6a580e24&is=6a56bca4&hm=35757a1bbb26049f5d9b1f3f7e834c7533514bb385ff5476295b1dec3d900c2c&",
 
   // Letzte Version / Datum (Anzeige)
   version: "v1.7.0",

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HugoMacro – Macros für HugoSmp</title>
+<meta name="description" content="HugoMacro – der Fabric Macro-Mod für HugoSmp. AH-, Sell-, Shop-, RTP-Macros, Ancient Miner, AFK und mehr.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0c11;--bg2:#0e1118;--card:#141926;--text:#eef2f7;--muted:#8b97ab;
+  --accent:#7c5cff;--accent2:#00d9a3;--gold:#ffcc4d;--border:#212838;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(700px 500px at 12% 5%, rgba(124,92,255,.20), transparent 60%),
+    radial-gradient(600px 450px at 88% 15%, rgba(0,217,163,.14), transparent 60%);}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+  background:rgba(10,12,17,.7);border-bottom:1px solid var(--border)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.logo .dot{width:12px;height:12px;border-radius:50%;
+  background:linear-gradient(120deg,var(--accent),var(--accent2));box-shadow:0 0 14px var(--accent)}
+.logo span{background:linear-gradient(120deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+nav.links a{color:var(--muted);margin-left:28px;font-weight:600;font-size:.95rem;transition:.2s}
+nav.links a:hover{color:var(--text)}
+.btn{display:inline-block;padding:12px 24px;border-radius:11px;font-weight:700;transition:.2s;
+  cursor:pointer;border:1px solid var(--border);font-size:.95rem}
+.btn-primary{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#0a0c11;border:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(124,92,255,.4)}
+.btn-ghost:hover{border-color:var(--accent);color:#fff}
+.btn-dc{background:#5865F2;border:none;color:#fff}
+.btn-dc:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(88,101,242,.4)}
+
+/* hero */
+.hero{position:relative;z-index:2;text-align:center;padding:110px 0 80px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid var(--border);
+  border-radius:999px;color:var(--muted);font-size:.85rem;margin-bottom:28px;background:rgba(255,255,255,.02)}
+.badge b{color:var(--accent2)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-bottom:22px}
+.hero h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:1.22rem;max-width:640px;margin:0 auto 40px}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.meta{display:flex;gap:28px;justify-content:center;margin-top:46px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.meta b{color:var(--text)}
+
+/* section */
+section.blk{position:relative;z-index:2;padding:70px 0}
+.h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px}
+.sub{color:var(--muted);text-align:center;max-width:560px;margin:0 auto 50px}
+
+/* features */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:var(--accent)}
+.card .ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px;
+  background:linear-gradient(120deg,rgba(124,92,255,.22),rgba(0,217,163,.18))}
+.card h3{font-size:1.12rem;margin-bottom:7px}
+.card p{color:var(--muted);font-size:.94rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;counter-reset:s}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-16px;left:24px;
+  width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-weight:900;
+  background:linear-gradient(120deg,var(--accent),var(--accent2));color:#0a0c11}
+.step h3{margin:12px 0 8px;font-size:1.1rem}
+.step p{color:var(--muted);font-size:.94rem}
+
+/* download */
+.dl{background:linear-gradient(135deg,rgba(124,92,255,.13),rgba(0,217,163,.10));
+  border:1px solid var(--border);border-radius:24px;padding:56px 32px;text-align:center}
+.dl h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:14px}
+.dl p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+.reqs{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:.9rem}
+.reqs span{display:flex;align-items:center;gap:7px}
+.reqs b{color:var(--text)}
+
+/* faq */
+details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:12px;cursor:pointer}
+details[open]{border-color:var(--accent)}
+summary{font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:1.4rem;color:var(--accent)}
+details[open] summary::after{content:'−'}
+details p{color:var(--muted);margin-top:14px;font-size:.95rem}
+
+footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:34px 0;text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:var(--accent)}
+.disc{max-width:640px;margin:16px auto 0;font-size:.8rem;color:#5b6577}
+
+@media(max-width:640px){nav.links{display:none}.hero{padding:70px 0 50px}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="dot"></span> Hugo<span>Macro</span></div>
+    <nav class="links">
+      <a href="#features">Features</a>
+      <a href="#start">Anleitung</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download">Download</a>
+    </nav>
+    <a href="#download" class="btn btn-primary">Holen</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <span class="badge">⚡ Fabric 1.21.11 · <b>v1.7.0</b></span>
+    <h1>Automatisiere <span class="grad">HugoSmp</span><br>wie ein Profi.</h1>
+    <p>HugoMacro bündelt alle Macros, die du auf HugoSmp brauchst – Auktionshaus,
+       Verkauf, Shop, RTP, Ancient Miner und mehr. Ein Tastendruck, alles läuft.</p>
+    <div class="btns">
+      <a href="https://cdn.discordapp.com/attachments/1440429787603800247/1526414900803539115/hugomacro-1.7.0-opensource.jar?ex=6a56f027&is=6a559ea7&hm=a77eb5a2e3ebd52889e83fcf8f3206560ce5b388a4155e7b1c52b069cc7ed231&" class="btn btn-primary">⬇ Jetzt herunterladen</a>
+      <a href="href="https://discord.gg/WrTEgYGTAn"" class="btn btn-dc">💬 Discord beitreten</a>
+    </div>
+    <div class="meta">
+      <div><b>11+</b> Macros</div>
+      <div><b>Fabric</b> Loader</div>
+      <div><b>1.21.11</b> Minecraft</div>
+      <div><b>Java 21</b></div>
+    </div>
+  </section>
+
+  <section class="blk" id="features">
+    <div class="h2">Alle Features</div>
+    <p class="sub">Jedes Macro ist auf HugoSmp abgestimmt und über eine Taste oder das Dashboard steuerbar.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🏷️</div><h3>AH-Macro</h3><p>Automatisches Auktionshaus – kaufen und listen ohne manuelles Klicken.</p></div>
+      <div class="card"><div class="ico">📦</div><h3>Order-Macro</h3><p>Bestellungen automatisch abarbeiten und abwickeln.</p></div>
+      <div class="card"><div class="ico">💰</div><h3>Sell-Macro</h3><p>Inventar blitzschnell und automatisch verkaufen.</p></div>
+      <div class="card"><div class="ico">🛒</div><h3>Shop-Buyer</h3><p>Items aus dem Shop automatisch in Massen einkaufen.</p></div>
+      <div class="card"><div class="ico">📮</div><h3>Abhol-Macro</h3><p>Verkäufe & Lieferungen automatisch abholen.</p></div>
+      <div class="card"><div class="ico">⛏️</div><h3>Ancient Miner</h3><p>Highlight & Auto-Mining für Ancient-Blöcke mit Render-Overlay.</p></div>
+      <div class="card"><div class="ico">🌍</div><h3>RTP-Controller</h3><p>Random-Teleport mit Biome-Auswahl und Auto-Reconnect.</p></div>
+      <div class="card"><div class="ico">😴</div><h3>Auto-AFK</h3><p>Bleib automatisch aktiv – kein Kick mehr wegen Inaktivität.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h3>Spawner-Protect</h3><p>Erkennt Bedrohungen an deinen Spawnern und reagiert.</p></div>
+      <div class="card"><div class="ico">📥</div><h3>Spawner-Dropper</h3><p>Spawner automatisch einsammeln und ablegen.</p></div>
+      <div class="card"><div class="ico">🎛️</div><h3>Dashboard-GUI</h3><p>Alle Macros zentral in einer sauberen Oberfläche steuern.</p></div>
+      <div class="card"><div class="ico">⌨️</div><h3>Keybinds</h3><p>Frei belegbare Tasten für jedes einzelne Feature.</p></div>
+    </div>
+  </section>
+
+  <section class="blk" id="start">
+    <div class="h2">In 4 Schritten startklar</div>
+    <p class="sub">Von der Installation bis zum ersten Macro in wenigen Minuten.</p>
+    <div class="steps">
+      <div class="step"><h3>Fabric installieren</h3><p>Fabric Loader für Minecraft 1.21.11 + Fabric API einrichten.</p></div>
+      <div class="step"><h3>Mod einsetzen</h3><p>Die <code>.jar</code> in deinen <code>mods</code>-Ordner legen.</p></div>
+      <div class="step"><h3>Key aktivieren</h3><p>Spiel starten, HugoMacro öffnet den Aktivierungs-Screen. HWID kopieren, Key eingeben.</p></div>
+      <div class="step"><h3>Loslegen</h3><p>Dashboard mit <b>P</b> öffnen oder Macros per Taste starten. Fertig!</p></div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="h2">Sicheres Key-System</div>
+    <p class="sub">Jeder Zugang ist an deinen PC gebunden und läuft automatisch nach Ablauf aus.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🔐</div><h3>HWID-gebunden</h3><p>Ein Key = ein PC. Wird beim ersten Start automatisch gebunden.</p></div>
+      <div class="card"><div class="ico">⏳</div><h3>Laufzeiten</h3><p>Von 14 Tagen bis Lifetime – die Zeit startet ab der ersten Aktivierung.</p></div>
+      <div class="card"><div class="ico">🛰️</div><h3>Signiert & geprüft</h3><p>Ed25519-Signaturen – Keys lassen sich nicht fälschen.</p></div>
+    </div>
+  </section>
+
+  <section class="blk" id="download">
+    <div class="dl">
+      <h2>HugoMacro herunterladen</h2>
+      <p>Neueste Version für Minecraft 1.21.11 (Fabric). Key über Discord anfragen.</p>
+      <div class="btns">
+        <a href="#" class="btn btn-primary(.jar)</a>
+        <a href="#" class="btn btn-dc">💬 Key im Discord holen</a>
+      </div>
+      <div class="reqs">
+        <span>🎮 Minecraft <b>1.21.11</b></span>
+        <span>🧵 <b>Fabric</b> Loader</span>
+        <span>☕ Java <b>21+</b></span>
+        <span>🔌 <b>Fabric API</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="faq">
+    <div class="h2">Häufige Fragen</div>
+    <p class="sub">Alles Wichtige rund um Installation und Keys.</p>
+    <div style="max-width:760px;margin:0 auto">
+      <details><summary>Welche Minecraft-Version brauche ich?</summary><p>Minecraft 1.21.11 mit dem Fabric Loader und Fabric API. Java 21 oder neuer ist erforderlich.</p></details>
+      <details><summary>Wie bekomme ich einen Key?</summary><p>Tritt dem Discord bei und fordere einen Key an. Beim ersten Start zeigt dir der Mod deine HWID – die brauchst du nicht selbst herauszufinden, der Key bindet sich automatisch.</p></details>
+      <details><summary>Kann ich den Key auf einem anderen PC nutzen?</summary><p>Nein, jeder Key ist an einen PC gebunden. Bei PC-Wechsel kann die Bindung im Discord zurückgesetzt werden.</p></details>
+      <details><summary>Was passiert, wenn mein Key abläuft?</summary><p>Nach Ablauf der Laufzeit (z. B. 14 Tage) wird der Mod automatisch gesperrt und die Macros lassen sich nicht mehr starten.</p></details>
+      <details><summary>Wie öffne ich das Dashboard?</summary><p>Standardmäßig mit der Taste <b>P</b>. Alle Tasten lassen sich in den Minecraft-Steuerungseinstellungen anpassen.</p></details>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 HugoMacro · Fabric Mod für HugoSmp · <a href="#">Discord</a> · <a href="#download">Download</a>
+    <div class="disc">HugoMacro ist ein privates Projekt und steht in keiner Verbindung zu Mojang oder Microsoft.
+    Nutzung auf eigene Verantwortung und nur im Rahmen der jeweiligen Serverregeln.</div>
+  </div>
+</footer>
+
+</body>
+</html>

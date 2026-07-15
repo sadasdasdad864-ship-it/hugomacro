@@ -22,7 +22,7 @@
       <a href="index.html#faq">FAQ</a>
     </nav>
     <div class="navright">
-      <span class="lang"><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg><svg class="luc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg> DE</span>
+      <span class="lang" id="langToggle" style="cursor:pointer;user-select:none">🌐 <b id="langDE">DE</b> / <span id="langEN">ENG</span></span>
       <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
     </div>
   </div>
@@ -292,7 +292,7 @@ document.getElementById('licBtn').addEventListener('click',function(){
   msg.style.color="var(--muted)"; msg.textContent="Prüfe Key...";
   verifyKey(key).then(function(res){
     if(res.status==="OK"||res.status==="LIFETIME"||res.status==="ACTIVE"){
-      msg.style.color="var(--good)"; msg.textContent="Key gültig! Dashboard wird freigeschaltet...";
+      msg.style.color="var(--good)"; msg.textContent="Key gültig! Mod wird mit Key vorbereitet...";
       localStorage.setItem('hugo_key',key);
       var did=(pendingUser&&pendingUser.discord_id)||'';
       try{localStorage.setItem('hugo_discord',did);}catch(e){}
@@ -303,6 +303,19 @@ document.getElementById('licBtn').addEventListener('click',function(){
             if(j.status==='OK'){ console.log('HugoMacro+ Rolle vergeben'); }
           }).catch(function(){});
       }
+      // Download-Button: laedt die .jar MIT eingebettetem Key vom Lizenzserver
+      var dl=document.getElementById('dlBtn');
+      dl.removeAttribute('href');
+      dl.onclick=function(ev){
+        ev.preventDefault();
+        msg.textContent="Lade HugoMacro+ herunter...";
+        fetch(window.HUGO_CONFIG.licenseServer.replace(/\/$/,'')+'/download',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:key,hwid:genHwid()})})
+          .then(function(r){
+            if(!r.ok){ msg.style.color="var(--accent2)"; msg.textContent="Download fehlgeschlagen (Key ungültig)."; return; }
+            return r.blob().then(function(b){ var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download="HugoMacro+.jar"; a.click(); URL.revokeObjectURL(a.href); msg.textContent="Download gestartet!"; });
+          })
+          .catch(function(){ msg.style.color="var(--accent2)"; msg.textContent="Server nicht erreichbar."; });
+      };
       setTimeout(function(){ unlockDash(pendingUser||null); },700);
     } else if(res.status==="EXPIRED"){ msg.style.color="var(--accent2)"; msg.textContent="Key abgelaufen.";
     } else if(res.status==="REVOKED"){ msg.style.color="var(--accent2)"; msg.textContent="Key widerrufen.";
@@ -334,5 +347,123 @@ document.querySelectorAll('.menu a[data-tab]').forEach(a=>{
   });
 });
 </script>
+
+<script>
+// ===== Dashboard i18n DE/ENG (Phrasen-Austausch) =====
+(function(){
+  const MAP = {
+    // nav
+    "Home":"Home","Modules":"Modules","Pricing":"Pricing","FAQ":"FAQ","Dashboard":"Dashboard",
+    // access gate
+    "Dashboard-Zugang":"Dashboard Access",
+    "Noch keinen Key?":"No key yet?",
+    "Plan wählen":"Choose a plan",
+    "Lizenz aktivieren":"Activate license",
+    "Key aktivieren":"Activate key",
+    "Bitte Key eingeben.":"Please enter a key.",
+    "Prüfe Key...":"Checking key...",
+    "Key gültig! Mod wird mit Key vorbereitet...":"Key valid! Preparing mod with key...",
+    "Key abgelaufen.":"Key expired.",
+    "Lade HugoMacro+ herunter...":"Downloading HugoMacro+...",
+    "Download fehlgeschlagen (Key ungültig).":"Download failed (invalid key).",
+    "Server nicht erreichbar.":"Server unreachable.",
+    "Download gestartet!":"Download started!",
+    // sidebar / cards
+    "HugoMacro+ – Latest":"HugoMacro+ – Latest",
+    "Aktuelle Version ·":"Current version ·",
+    "Quick Start":"Quick Start",
+    "In 3 Schritten startklar.":"Ready in 3 steps.",
+    "Download":"Download",
+    "Neueste .jar oben laden.":"Get the latest .jar above.",
+    "Install":"Install",
+    "In deinen 1.21.11 mods-Ordner.":"Into your 1.21.11 mods folder.",
+    "Play":"Play",
+    "Starten & Taste P drücken.":"Start & press the P key.",
+    "Kompatible Launcher":"Compatible Launchers",
+    "Läuft auf allen Fabric-Launchern.":"Runs on all Fabric launchers.",
+    "Minecraft Launcher":"Minecraft Launcher",
+    "Official":"Official","Compatible":"Compatible","Required":"Required","At max":"At max",
+    "Modrinth App":"Modrinth App","Feather Client":"Feather Client","Prism Launcher":"Prism Launcher",
+    "System Requirements":"System Requirements",
+    "Version":"Version","Mod Loader":"Mod Loader","Fabric":"Fabric","Fabric API":"Fabric API",
+    "Java":"Java","Device Slots":"Device Slots",
+    "HWID Reset":"HWID Reset",
+    "Setzt die Geräte-Bindung zurück":"Resets the device binding",
+    "Setzt alle Konfigurationen auf Standard zurück.":"Resets all configs to default.",
+    "Config Reset":"Config Reset",
+    "Zurück auf Werkseinstellung":"Back to factory defaults",
+    "Crash Log Analyzer":"Crash Log Analyzer",
+    "Füge deinen Crash-Log ein, um häufige Probleme zu erkennen.":"Paste your crash log to detect common issues.",
+    // faq
+    "Alles Wichtige rund um HugoMacro.":"Everything about HugoMacro.",
+    "Wie installiere ich HugoMacro?":"How do I install HugoMacro?",
+    "Welche Minecraft-Version wird unterstützt?":"Which Minecraft version is supported?",
+    "Minecraft 1.21.11 (Fabric), Java 21+.":"Minecraft 1.21.11 (Fabric), Java 21+.",
+    "Wie öffne ich das Dashboard im Spiel?":"How do I open the dashboard in-game?",
+    "Mit der Taste P. Anpassbar in den Minecraft-Steuerungen.":"With the P key. Adjustable in Minecraft controls.",
+    "Kann ich auf mehreren Geräten nutzen?":"Can I use it on multiple devices?",
+    "Je nach Plan 1–2 Geräte. HWID wird automatisch beim Start gebunden.":"1–2 devices depending on plan. HWID is bound automatically on start.",
+    "Mein Key funktioniert nicht – was tun?":"My key doesn't work – what now?",
+    "Öffne ein Ticket im Discord, wir helfen dir weiter.":"Open a ticket on Discord and we'll help you.",
+    "Bekomme ich Updates?":"Do I get updates?",
+    "Ja, alle Updates sind je nach Plan inklusive.":"Yes, all updates are included depending on plan.",
+    "Was ist neu in HugoMacro.":"What's new in HugoMacro.",
+    "Redeem a License Key":"Redeem a License Key",
+    "Aktiviere einen neuen Key.":"Activate a new key.",
+    "Redeem":"Redeem"
+  };
+  // reverse map EN->DE
+  const REV = {}; for(const k in MAP){ REV[MAP[k]] = k; }
+
+  function translateNode(root, dict){
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    const nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n=>{
+      const t = n.nodeValue.trim();
+      if(dict[t] !== undefined && dict[t] !== t){
+        n.nodeValue = n.nodeValue.replace(t, dict[t]);
+      }
+    });
+    // placeholders
+    root.querySelectorAll('[placeholder]').forEach(el=>{
+      const t=el.getAttribute('placeholder').trim();
+      if(dict[t]!==undefined) el.setAttribute('placeholder',dict[t]);
+    });
+  }
+
+  function applyLang(lang){
+    if(lang==='en'){ translateNode(document.body, MAP); }
+    else { translateNode(document.body, REV); }
+    document.documentElement.lang=lang;
+    localStorage.setItem('hugo_lang',lang);
+    const de=document.getElementById('langDE'), en=document.getElementById('langEN');
+    if(de&&en){ de.style.opacity=lang==='de'?'1':'.45'; en.style.opacity=lang==='en'?'1':'.45'; }
+  }
+
+  let cur='de';
+  function setLang(target){
+    if(target===cur) return;
+    // always translate from current state
+    if(target==='en' && cur==='de'){ translateNode(document.body, MAP); }
+    else if(target==='de' && cur==='en'){ translateNode(document.body, REV); }
+    cur=target;
+    document.documentElement.lang=target;
+    localStorage.setItem('hugo_lang',target);
+    const de=document.getElementById('langDE'), en=document.getElementById('langEN');
+    if(de&&en){ de.style.opacity=target==='de'?'1':'.45'; en.style.opacity=target==='en'?'1':'.45'; }
+  }
+
+  window.addEventListener('DOMContentLoaded', function(){
+    let saved = localStorage.getItem('hugo_lang');
+    if(!saved){ saved = (navigator.language||'de').toLowerCase().startsWith('en')?'en':'de'; }
+    if(saved==='en') setLang('en');
+    else { const de=document.getElementById('langDE'),en=document.getElementById('langEN'); if(de&&en){de.style.opacity='1';en.style.opacity='.45';} }
+    const t=document.getElementById('langToggle');
+    if(t) t.addEventListener('click', ()=> setLang(cur==='de'?'en':'de'));
+  });
+})();
+</script>
+
 </body>
 </html>
